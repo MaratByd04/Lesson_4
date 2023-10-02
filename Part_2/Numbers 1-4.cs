@@ -8,8 +8,12 @@ namespace Part_2
 {
     internal class Numbers
     {
-        static void Main(string[] args)
+       
+
+        static void Main()
         {
+            
         }
+
     }
 }
