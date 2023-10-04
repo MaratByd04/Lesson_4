@@ -8,10 +8,16 @@ namespace Part_2
 {
     internal class Numbers
     {
-        
-           
+      
+        public static void Main(string[] args)
+        {
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Black;
+            string s = Console.ReadLine();
+            Console.WriteLine(s.ToUpper());
+        }
 
-       
-        
+
     }
 }

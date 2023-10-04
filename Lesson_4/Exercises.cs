@@ -75,6 +75,23 @@ namespace Part_1
             }
             Console.ReadKey();
             Console.Clear();
+
+
+            Console.WriteLine("Упражнение 5.4. Рекурсивный факториал.");
+
+
+            Console.WriteLine("Введите число, факториал которого хотите получить.");
+            try
+            {
+                long.TryParse(Console.ReadLine(), out long numbForFact);
+                Console.WriteLine(FactorialRekurs(numbForFact));
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("Ошибка! Вы ввели слишком большое число.");
+            }
+            Console.ReadKey();
+            Console.Clear();
         }
 
        
@@ -99,7 +116,24 @@ namespace Part_1
 
         }
 
+        static long FactorialRekurs(long numbForFact) // Метод для упражнения 5.4
+        {
 
+
+            checked
+            {
+                if (numbForFact == 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return numbForFact * FactorialRekurs(numbForFact - 1);
+                }
+            }
+
+
+        }
 
     }
 }
