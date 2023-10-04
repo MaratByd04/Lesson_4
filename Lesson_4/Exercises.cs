@@ -21,8 +21,6 @@ namespace Part_1
                     Console.WriteLine("Наибольшее из чисел = " + secondNumber);
                     return secondNumber;
                 }
-
-
             }
 
               static void ChangesOfVariable(ref int firstVariable, ref int secondVariable) // Метод для Упр 5.2
@@ -62,6 +60,7 @@ namespace Part_1
 
             Console.WriteLine("Упражнение 5.3. Факториал числа.\n");
 
+
             Console.WriteLine("Введите число, факториал которого хотите получить.");
             int.TryParse(Console.ReadLine(), out int numbForFactorial);
             long resultOfFactorial;
@@ -77,7 +76,7 @@ namespace Part_1
             Console.Clear();
 
 
-            Console.WriteLine("Упражнение 5.4. Рекурсивный факториал.");
+            Console.WriteLine("Упражнение 5.4. Рекурсивный факториал.\n");
 
 
             Console.WriteLine("Введите число, факториал которого хотите получить.");
@@ -92,6 +91,26 @@ namespace Part_1
             }
             Console.ReadKey();
             Console.Clear();
+
+
+            Console.WriteLine("Домашнее задание 5.1. НОД для двух и трех чисел.\n");
+
+
+            Console.WriteLine("Введите Первое число.");
+            int.TryParse(Console.ReadLine(), out int numb1);
+            Console.WriteLine("Введите Второе числою.");
+            int.TryParse(Console.ReadLine(), out int numb2);
+            Console.WriteLine("Введите Третье числою.");
+            int.TryParse(Console.ReadLine(), out int numb3);
+            int nodFor2numbers = algorithmEuclidean(numb1, numb2);
+            int nodFor3numbers = algorithmEuclidean(numb1, numb2, numb3);
+            Console.WriteLine("НОД для двух чисел = " + nodFor2numbers);
+            Console.WriteLine("НОД для трех чисел = " + nodFor3numbers);
+            Console.ReadKey();
+            Console.Clear();
+
+
+
         }
 
        
@@ -113,13 +132,10 @@ namespace Part_1
             {
                 return false;
             }
-
         }
 
         static long FactorialRekurs(long numbForFact) // Метод для упражнения 5.4
         {
-
-
             checked
             {
                 if (numbForFact == 1)
@@ -131,9 +147,22 @@ namespace Part_1
                     return numbForFact * FactorialRekurs(numbForFact - 1);
                 }
             }
-
-
         }
 
+        static int algorithmEuclidean(int a, int b) // Метод для НОД двух чисел 
+        {
+            while (b != 0)
+            {
+                int forExchange = b;
+                b = a % b;
+                a = forExchange;
+            }
+            return a;
+        }
+
+        static int algorithmEuclidean(int a, int b, int c) // Метод для НОД трех чисел.
+        {
+            return algorithmEuclidean(a, algorithmEuclidean(b, c));
+        }
     }
 }
