@@ -110,7 +110,28 @@ namespace Part_1
             Console.Clear();
 
 
+            Console.WriteLine("Домашнее задание 5.2. Ряд Фибоначчи.\n");
 
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Предупреждаю! В случае введения номера больше 45 ждать вы будете очень долго, тк метод крайне примитивен.\n");
+            Console.ResetColor();
+            Console.WriteLine("Введите номер числа из ряда Фибоначчи, которое хотите узнать.\n");
+
+            try
+            {
+                checked
+                {
+                    uint.TryParse(Console.ReadLine(), out uint numbOfRowInFibonacchi);
+                    Console.WriteLine("F{n} = " + FibonachiNum(numbOfRowInFibonacchi));
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Вы ввели отрицательное число! Пожалуйста, перезапустите программу и попробуйте снова.");
+            }
+            Console.ReadKey();
+            Console.Clear();
         }
 
        
@@ -163,6 +184,25 @@ namespace Part_1
         static int algorithmEuclidean(int a, int b, int c) // Метод для НОД трех чисел.
         {
             return algorithmEuclidean(a, algorithmEuclidean(b, c));
+        }
+
+        static int FibonachiNum(uint numbOfFibonachiRow) // Метод для дз 5.2.
+        {
+            if (numbOfFibonachiRow > 0)
+            {
+                if (numbOfFibonachiRow == 1 || numbOfFibonachiRow == 2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return FibonachiNum(numbOfFibonachiRow - 1) + FibonachiNum(numbOfFibonachiRow - 2);
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Число не должно быть отрицательным.");
+            }
         }
     }
 }
